@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: CurrencyRepository::class)]
 class Currency
 {
+    private const ACCURACY = 10_000;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
