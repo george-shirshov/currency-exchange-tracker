@@ -17,4 +17,9 @@ readonly class CurrencyService
     {
         return $this->repository->findAll();
     }
+
+    public function getByNumCode(string $numCode): Currency
+    {
+        return $this->repository->getByNumCode($numCode);
+    }
 }
