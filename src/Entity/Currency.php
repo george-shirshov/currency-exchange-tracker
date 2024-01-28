@@ -7,19 +7,20 @@ use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CurrencyRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Currency
 {
-    private const ACCURACY = 10_000;
+    public const ACCURACY = 10_000;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private int $id;
 
-    #[ORM\Column(length: 3)]
+    #[ORM\Column(length: 3, unique: true)]
     private string $numCode;
 
-    #[ORM\Column(length: 3)]
+    #[ORM\Column(length: 3, unique: true)]
     private string $charCode;
 
     #[ORM\Column]
@@ -102,6 +103,13 @@ class Currency
         return $this;
     }
 
+    public function setValueFromString(string $value): static
+    {
+        $this->value = $this->convertCurrencyValue($value);
+
+        return $this;
+    }
+
     public function getUnitRate(): int
     {
         return $this->unitRate;
@@ -114,15 +122,27 @@ class Currency
         return $this;
     }
 
+    public function setUnitRateFromString(string $unitRate): static
+    {
+        $this->unitRate = $this->convertCurrencyValue($unitRate);
+
+        return $this;
+    }
+
     public function getUpdateAt(): DateTimeImmutable
     {
         return $this->updateAt;
     }
 
-    public function setUpdateAt(DateTimeImmutable $updateAt): static
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function updateTimestamps(): void
     {
-        $this->updateAt = $updateAt;
+        $this->updateAt = new \DateTimeImmutable();
+    }
 
-        return $this;
+    private function convertCurrencyValue(string $value): int
+    {
+        return (float)str_replace(',', '.', $value) * Currency::ACCURACY;
     }
 }
