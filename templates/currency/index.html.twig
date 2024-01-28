@@ -1,0 +1,16 @@
+{# @var currency App\Entity\Currency #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CurrencyController!{% endblock %}
+
+{% block body %}
+<main>
+    <a href="/currencies">< Назад</a>
+    <h1>{{ currency.getName }} ({{ currency.getCharCode }})</h1>
+    <hr>
+    <p>Значение: {{ currency.getFormattedValue }}</p>
+    <p>Курс за 1 единицу: {{ currency.getFormattedUnitRate }}</p>
+    <p>Номинал: {{ currency.getNominal }}</p>
+</main>
+{% endblock %}
