@@ -120,7 +120,7 @@ class Currency
         return $this->unitRate;
     }
 
-    public function getFormattedUnitRate(): int
+    public function getFormattedUnitRate(): float
     {
         return $this->unitRate / self::ACCURACY;
     }
