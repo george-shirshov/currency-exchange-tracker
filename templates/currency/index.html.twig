@@ -2,11 +2,11 @@
 
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CurrencyController!{% endblock %}
+{% block title %}| {{ currency.getCharCode }}{% endblock %}
 
 {% block body %}
 <main>
-    <a href="/currencies">< Назад</a>
+    <a href="/currencies">Все валюты</a>
     <h1>{{ currency.getName }} ({{ currency.getCharCode }})</h1>
     <hr>
     <p>Значение: {{ currency.getFormattedValue }}</p>
