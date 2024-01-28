@@ -24,7 +24,7 @@
                     <td>{{ currency.getCharCode }} ({{ currency.getNumCode }})</td>
                     <td>{{ currency.getName }}</td>
                     <td>{{ currency.getUpdateAt }}</td>
-                    <td><a href="/currencies/{{ currency.getNumCode }}">Перейти</a></td>
+                    <td><a href="{{ path('currencies', {numCode: currency.getNumCode}) }}}">Перейти</a></td>
                 </tr>
             {% endfor %}
         </tbody>

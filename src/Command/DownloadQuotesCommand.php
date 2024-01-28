@@ -3,7 +3,7 @@
 namespace App\Command;
 
 use App\Repository\CurrencyRepository;
-use App\Service\DownloadQuotesService;
+use App\Service\DownloadCurrenciesService;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -16,12 +16,12 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 #[AsCommand(
     name: 'download:quotes',
-    description: 'Получение котировок',
+    description: 'Получение значений валют',
 )]
 class DownloadQuotesCommand extends Command
 {
     public function __construct(
-        private readonly DownloadQuotesService $downloadQuotesService,
+        private readonly DownloadCurrenciesService $downloadQuotesService,
         private readonly CurrencyRepository $currencyRepository,
     ) {
         parent::__construct();

@@ -9,10 +9,10 @@
         <nav>
             <ul>
                 <li>
-                    <a href="/currencies">Все валюты</a>
+                    <a href="{{ path('currencies') }}">Все валюты</a>
                 </li>
                 <li>
-                    <a href="/currencies/840">Валюта USD</a>
+                    <a href="{{ path('currency', {numCode: '840'}) }}">Валюта USD</a>
                 </li>
             </ul>
         </nav>

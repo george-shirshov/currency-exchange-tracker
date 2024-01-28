@@ -6,7 +6,7 @@
 
 {% block body %}
 <main>
-    <a href="/currencies">Все валюты</a>
+    <a href="{{ path('currencies') }}">Все валюты</a>
     <h1>{{ currency.getName }} ({{ currency.getCharCode }})</h1>
     <hr>
     <p>Значение: {{ currency.getFormattedValue }}</p>
