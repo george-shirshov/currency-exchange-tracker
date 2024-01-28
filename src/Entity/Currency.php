@@ -96,6 +96,11 @@ class Currency
         return $this->value;
     }
 
+    public function getFormattedValue(): float
+    {
+        return $this->value / self::ACCURACY;
+    }
+
     public function setValue(int $value): static
     {
         $this->value = $value;
@@ -115,6 +120,11 @@ class Currency
         return $this->unitRate;
     }
 
+    public function getFormattedUnitRate(): float
+    {
+        return $this->unitRate / self::ACCURACY;
+    }
+
     public function setUnitRate(int $unitRate): static
     {
         $this->unitRate = $unitRate;
@@ -129,9 +139,9 @@ class Currency
         return $this;
     }
 
-    public function getUpdateAt(): DateTimeImmutable
+    public function getUpdateAt(): string
     {
-        return $this->updateAt;
+        return $this->updateAt->format('d/m/Y');
     }
 
     #[ORM\PrePersist]

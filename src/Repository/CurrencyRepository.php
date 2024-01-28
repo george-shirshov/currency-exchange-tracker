@@ -47,9 +47,14 @@ class CurrencyRepository extends ServiceEntityRepository
         $this->manager->flush();
     }
 
-    private function create(Currency $currency): void
+    public function create(Currency $currency): void
     {
         $this->manager->persist($currency);
         $this->manager->flush();
+    }
+
+    public function getByNumCode(string $numCode): Currency
+    {
+        return $this->findOneBy(['numCode' => $numCode]);
     }
 }

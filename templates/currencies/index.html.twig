@@ -1,0 +1,33 @@
+{# @var currencies array<App\Entity\Currency> #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}| Валюты{% endblock %}
+
+{% block body %}
+<main>
+    <h1>Валюты:</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Код валюты</th>
+                <th>Название</th>
+                <th>Время обновления</th>
+                <th>Подробнее</th>
+            </tr>
+        </thead>
+        <tbody>
+            {# @var currency App\Entity\Currency #}
+            {% for currency in currencies %}
+                <tr>
+                    <td>{{ currency.getCharCode }} ({{ currency.getNumCode }})</td>
+                    <td>{{ currency.getName }}</td>
+                    <td>{{ currency.getUpdateAt }}</td>
+                    <td><a href="/currencies/{{ currency.getNumCode }}">Перейти</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}
