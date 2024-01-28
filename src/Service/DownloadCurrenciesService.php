@@ -12,7 +12,7 @@ use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-readonly class DownloadQuotesService
+readonly class DownloadCurrenciesService
 {
     private const URL = 'https://cbr.ru/scripts/XML_daily.asp';
 
