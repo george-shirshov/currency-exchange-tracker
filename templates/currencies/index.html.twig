@@ -13,9 +13,6 @@
             <tr>
                 <th>Код валюты</th>
                 <th>Название</th>
-                <th>Номинал</th>
-                <th>Значение</th>
-                <th>Курс за 1 ед.</th>
                 <th>Время обновления</th>
                 <th>Подробнее</th>
             </tr>
@@ -26,11 +23,8 @@
                 <tr>
                     <td>{{ currency.getCharCode }} ({{ currency.getNumCode }})</td>
                     <td>{{ currency.getName }}</td>
-                    <td>{{ currency.getNominal }}</td>
-                    <td>{{ currency.getFormattedValue }}</td>
-                    <td>{{ currency.getFormattedUnitRate }}</td>
                     <td>{{ currency.getUpdateAt }}</td>
-                    <td><a href="https://www.google.com">Перейти</a></td>
+                    <td><a href="/currencies/{{ currency.getNumCode }}">Перейти</a></td>
                 </tr>
             {% endfor %}
         </tbody>
