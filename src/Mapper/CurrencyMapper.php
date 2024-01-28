@@ -15,7 +15,6 @@ class CurrencyMapper
         $currency->setName($data['Name']);
         $currency->setValueFromString($data['Value']);
         $currency->setUnitRateFromString($data['VunitRate']);
-        $currency->setUpdateAt(new \DateTimeImmutable());
         return $currency;
     }
 }

@@ -7,6 +7,7 @@ use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CurrencyRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Currency
 {
     public const ACCURACY = 10_000;
@@ -16,10 +17,10 @@ class Currency
     #[ORM\Column]
     private int $id;
 
-    #[ORM\Column(length: 3)]
+    #[ORM\Column(length: 3, unique: true)]
     private string $numCode;
 
-    #[ORM\Column(length: 3)]
+    #[ORM\Column(length: 3, unique: true)]
     private string $charCode;
 
     #[ORM\Column]
@@ -133,11 +134,11 @@ class Currency
         return $this->updateAt;
     }
 
-    public function setUpdateAt(DateTimeImmutable $updateAt): static
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function updateTimestamps(): void
     {
-        $this->updateAt = $updateAt;
-
-        return $this;
+        $this->updateAt = new \DateTimeImmutable();
     }
 
     private function convertCurrencyValue(string $value): int
