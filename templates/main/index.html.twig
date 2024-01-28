@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}| Главная{% endblock %}
+
+{% block body %}
+    <main>
+        <h1>Главная</h1>
+        Перейти на страницу:
+        <nav>
+            <ul>
+                <li>
+                    <a href="/currencies">Все валюты</a>
+                </li>
+                <li>
+                    <a href="/currencies/USD">Валюта USD</a>
+                </li>
+            </ul>
+        </nav>
+    </main>
+{% endblock %}
