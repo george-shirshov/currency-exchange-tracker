@@ -102,6 +102,13 @@ class Currency
         return $this;
     }
 
+    public function setValueFromString(string $value): static
+    {
+        $this->value = $this->convertCurrencyValue($value);
+
+        return $this;
+    }
+
     public function getUnitRate(): int
     {
         return $this->unitRate;
@@ -110,6 +117,13 @@ class Currency
     public function setUnitRate(int $unitRate): static
     {
         $this->unitRate = $unitRate;
+
+        return $this;
+    }
+
+    public function setUnitRateFromString(string $unitRate): static
+    {
+        $this->unitRate = $this->convertCurrencyValue($unitRate);
 
         return $this;
     }
@@ -124,5 +138,10 @@ class Currency
         $this->updateAt = $updateAt;
 
         return $this;
+    }
+
+    private function convertCurrencyValue(string $value): int
+    {
+        return (float)str_replace(',', '.', $value) * Currency::ACCURACY;
     }
 }
