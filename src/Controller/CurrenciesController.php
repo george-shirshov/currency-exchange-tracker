@@ -14,7 +14,7 @@ class CurrenciesController extends AbstractController
     ) {
     }
 
-    #[Route('/currencies', name: 'currencies', methods: 'GET')]
+    #[Route('/currencies', name: 'currencies')]
     public function index(): Response
     {
         $currencies = $this->service->getAll();
